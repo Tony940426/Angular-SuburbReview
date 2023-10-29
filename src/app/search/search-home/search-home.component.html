@@ -22,7 +22,26 @@
                 <input type="text" formControlName="postcode">
             </div>
         </div>
+        <div class="two fields">
+            <div class="field">
+                <label>Bedrooms</label>
+                <select class="ui fluid dropdown" formControlName="bedrooms">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Property Type</label>
+                <select class="ui fluid dropdown" formControlName="type">
+                    <option value="House">House</option>
+                    <option value="Unit">Unit</option>
+                </select>
+            </div>
+        </div>
         <button class="ui primary button" type="button" (click)="storeFormsValue()">Search</button>
     </form>
-    {{ searchForm.value | json }}
 </div>
+
+
