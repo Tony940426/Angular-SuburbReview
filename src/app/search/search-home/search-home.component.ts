@@ -34,8 +34,7 @@ export class SearchHomeComponent {
     const {state, suburb, postcode, type, bedrooms} = this.searchForm.value;
     const apiKey = 'key_16e9a90ece4b1760855b15b81a51a707';
     const headers = new HttpHeaders().set('X-API-KEY', apiKey);
-
-    console.log(this.searchForm.value)
+    
     return this.search.searchApi({state, suburb, postcode, type, bedrooms}, headers).subscribe(
       response => {
         this.result = response.series.seriesInfo[0].values;
