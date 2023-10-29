@@ -42,6 +42,16 @@
         </div>
         <button class="ui primary button" type="button" (click)="storeFormsValue()">Search</button>
     </form>
+    <div class="ui card">
+        <div class="content">
+          <div class="header">{{searchForm.get('suburb')?.value}}</div>
+          <div class="meta">
+            <span>{{searchForm.get('postcode')?.value}}</span>
+            <a>Median Sale Price:</a>
+          </div>
+          <p></p>
+        </div>
+      </div>
 </div>
 
 

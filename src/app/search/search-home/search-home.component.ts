@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Optional } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SearchService } from '../search.service';
 
@@ -24,8 +24,10 @@ export class SearchHomeComponent {
   })
 
   result: any;
+  medianSalePrice: any;
 
-  constructor(private http: HttpClient){
+
+  constructor(private search: SearchService){
   }
 
   storeFormsValue(){
@@ -33,7 +35,8 @@ export class SearchHomeComponent {
     const apiKey = 'key_16e9a90ece4b1760855b15b81a51a707';
     const headers = new HttpHeaders().set('X-API-KEY', apiKey);
 
-    return this.http.get<any>(`https://api.domain.com.au/v2/suburbPerformanceStatistics/${state}/${suburb}/${postcode}?propertyCategory=${type}&bedrooms=${bedrooms}&periodSize=years&startingPeriodRelativeToCurrent=1&totalPeriods=1`, {headers}).subscribe(
+    console.log(this.searchForm.value)
+    return this.search.searchApi({state, suburb, postcode, type, bedrooms}, headers).subscribe(
       response => {
         this.result = response.series.seriesInfo[0].values;
         console.log(this.result);
