@@ -1,8 +1,8 @@
 <div class="ui container">
-    <form class="ui form">
+    <form [formGroup]="searchForm" class="ui form">
         <div class="field">
             <label>State</label>
-            <select class="ui fluid dropdown">
+            <select class="ui fluid dropdown" formControlName="state">
                 <option value="VIC">VIC</option>
                 <option value="NSW">NSW</option>
                 <option value="QLD">QLD</option>
@@ -15,13 +15,14 @@
         <div class="two fields">
             <div class="field">
                 <label>Suburb</label>
-                <input type="text">
+                <input type="text" formControlName="suburb">
             </div>
             <div class="field">
                 <label>Postcode</label>
-                <input type="text">
+                <input type="text" formControlName="postcode">
             </div>
         </div>
-        <button class="ui primary button">Search</button>
+        <button class="ui primary button" type="button" (click)="storeFormsValue()">Search</button>
     </form>
+    {{ searchForm.value | json }}
 </div>
