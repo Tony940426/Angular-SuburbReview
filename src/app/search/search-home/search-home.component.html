@@ -44,10 +44,12 @@
     </form>
     <div class="ui card">
         <div class="content">
-          <div class="header">{{searchForm.get('suburb')?.value}}</div>
+          <div class="header">{{displaySuburb}} {{displayPostcode}}</div>
           <div class="meta">
-            <span>{{searchForm.get('postcode')?.value}}</span>
-            <a>Median Sale Price:</a>
+            <span>{{displayType}} {{displayBedrooms}} Bedrooms</span>
+            <a>Median Sale Price: ${{result.medianSoldPrice}}</a>
+            <a>Days on Market: ${{result.daysOnMarket}}</a>
+            <a>Median Rent Price: ${{result.medianRentListPrice}}</a>
           </div>
           <p></p>
         </div>

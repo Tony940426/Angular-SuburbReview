@@ -25,6 +25,10 @@ export class SearchHomeComponent {
 
   result: any;
   medianSalePrice: any;
+  displaySuburb = '';
+  displayPostcode = '';
+  displayType = '';
+  displayBedrooms = '';
 
 
   constructor(private search: SearchService){
@@ -38,6 +42,10 @@ export class SearchHomeComponent {
     return this.search.searchApi({state, suburb, postcode, type, bedrooms}, headers).subscribe(
       response => {
         this.result = response.series.seriesInfo[0].values;
+        this.displayPostcode = this.searchForm.get('postcode')?.value as string
+        this.displaySuburb = this.searchForm.get('suburb')?.value as string
+        this.displayType = this.searchForm.get('type')?.value as string
+        this.displayBedrooms = this.searchForm.get('bedrooms')?.value as string
         console.log(this.result);
       }
     )
