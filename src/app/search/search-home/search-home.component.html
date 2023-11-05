@@ -42,18 +42,20 @@
         </div>
         <button class="ui primary button" type="button" (click)="storeFormsValue()">Search</button>
     </form>
-    <div class="ui card">
-        <div class="content">
-          <div class="header">{{displaySuburb}} {{displayPostcode}}</div>
-          <div class="meta">
-            <span>{{displayType}} {{displayBedrooms}} Bedrooms</span>
-            <a>Median Sale Price: ${{result.medianSoldPrice}}</a>
-            <a>Days on Market: ${{result.daysOnMarket}}</a>
-            <a>Median Rent Price: ${{result.medianRentListPrice}}</a>
+    <ng-container *ngIf="displaySuburb">
+        <div class="ui card">
+            <div class="content">
+              <div class="header">{{displaySuburb}} {{displayPostcode}}</div>
+              <div class="meta">
+                <span><b>{{displayType}} - {{displayBedrooms}} Bedrooms</b></span>
+                <li *ngIf="result.medianSoldPrice!= null">Median Sale Price: ${{result.medianSoldPrice}}</li>
+                <li *ngIf="result.daysOnMarket != null">Days on Market: {{result.daysOnMarket}}</li>
+                <li *ngIf="result.medianRentListingPrice!= null">Median Rent Price: ${{result.medianRentListingPrice}}</li>
+              </div>
+              <p></p>
+            </div>
           </div>
-          <p></p>
-        </div>
-      </div>
+    </ng-container>
 </div>
 
 
